@@ -1,0 +1,15 @@
+---
+# tasks file for install_node_exporter
+- name: Download_NodeExporter
+  ansible.builtin.get_url:
+    url: '{{remote_node_exporter_install_path}}'
+    dest: ~/
+- name: Untar_NodeExporter
+  ansible.builtin.unarchive:
+    src: node_exporter-1.4.0.linux-amd64.tar.gz
+    dest: ~/
+    remote_src: yes
+- name: Run_NodeExporter
+  ansible.builtin.shell:
+    chdir: ~/node_exporter-1.4.0.linux-amd64
+    cmd: nohup ./node_exporter &

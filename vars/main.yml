@@ -1,0 +1,5 @@
+---
+# vars file for install_node_exporter
+
+#Last version node_exporter path download
+remote_node_exporter_install_path: https://github.com/prometheus/node_exporter/releases/download/v1.4.0/node_exporter-1.4.0.linux-amd64.tar.gz
