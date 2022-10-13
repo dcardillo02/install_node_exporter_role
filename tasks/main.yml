@@ -55,11 +55,6 @@
     permanent: yes
     state: enabled
 
-- name: Reload firewall after changes
-  systemd:
-    name: firewalld.service
-    state: reloaded
-    
 - name: Install service
   template:
     src: node_exporter.service.j2
