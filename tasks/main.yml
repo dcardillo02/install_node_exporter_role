@@ -49,6 +49,17 @@
     path: /tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/
     state: absent
 
+- name: Add node exporter port to firewall
+  firewalld:
+    port: 9100/tcp
+    permanent: yes
+    state: enabled
+
+- name: Reload firewall after changes
+  systemd:
+    name: firewalld.service
+    state: reloaded
+    
 - name: Install service
   template:
     src: node_exporter.service.j2
